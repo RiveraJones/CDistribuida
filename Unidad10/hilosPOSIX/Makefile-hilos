@@ -1,0 +1,15 @@
+
+OBJ1=	TCPmtechod.o passivesock.o passiveTCP.o errexit.o
+OBJ2=	TCPmtechod-cv.o passivesock.o passiveTCP.o errexit.o
+
+all:	TCPmtechod TCPmtechod-cv
+
+TCPmtechod:	$(OBJ1)
+	cc -o TCPmtechod $(OBJ1) -lpthread
+
+TCPmtechod-cv:	$(OBJ2)
+	cc -o TCPmtechod-cv $(OBJ2) -lpthread
+
+clean:
+	rm $(OBJ1) rm $(OBJ2)
+
