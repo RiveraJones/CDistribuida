@@ -1,11 +1,20 @@
-// TCPmtechod.c - main, TCPechod, prstats 
+// TCPmtechod.c - main, TCPechod, prstats
 //	implementa una relacion productor - consumidor simple
 //	struct stats - contadores estadisticos compartidos entre los hilos
 //	TCPechod - hilos productores: actualizan los contadores estadisticos
 //	prstats - hilo consumidor: lee los contadores estadisticos
 //		duerme 5 segundos y lee los contadores
-//	st_mutex - controla el acceso exclusivo a las secciones criticas que 
+//	st_mutex - controla el acceso exclusivo a las secciones criticas que
 //		actualizan y leen los contadores estadisticos compartidos
+
+//[root@localhost hilosPOSIX]# ./TCPmtechod
+///////////////////////////////////////////////////////
+//[root@localhost ~]# netstat -na | grep 10007
+//                    tcp        0      0 0.0.0.0:10007           0.0.0.0:*               LISTEN
+//[root@localhost ~]# telnet localhost 10007
+
+//
+
 
 #include <unistd.h>
 #include <stdlib.h>
