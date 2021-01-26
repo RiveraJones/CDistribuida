@@ -1,0 +1,11 @@
+Programa Pthreads
+
+maxthreads - imprime el numero maximo de hilos, crea n hilos, utiliza mutex
+
+barreras - uso de barreras con 3 hilos
+
+mm_prog6.1 - multiplicacion de matrices (figura 6.1 del texto)
+
+sched_attr_fig6.19 - programa basado en la figura 6.19 del texto
+
+tls - thread local storage

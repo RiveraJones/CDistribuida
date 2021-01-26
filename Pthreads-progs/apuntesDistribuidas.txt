@@ -1,0 +1,139 @@
+Miercoles 20 de diciembre 2020
+Barreras para esperar a que los hilos terminen >> BARRERA ABSOLUTA.
+
+**Pool de hilos**
+
+Paralelismo con pipeling
+  Procesamiento por imagenes. A tarves de fases, eliminar el ruido y luego la segmentazcion.
+  Necesitamos una sincronizacion con el flujo de datos.
+  Cada hilo tendria sus tareas
+    img1    D1
+    img2    D2
+    img3    D3
+    img4
+
+Barreras, hay casos en los que no es necesario que todos los hilos terminen.
+
+Productor - consumidor
+nivel de cocncurrencia 3.
+Se pueden dar condiciones de carrera, tendremos que usar algun mecanismo de control
+de cocncurrencia. Usaremos mutex, el mas adecuado.
+Un hilo adicional leera las esdisticas y las podremos leer.
+Tenemos 3 hilos a la izq, cada uno atiende a un cliente y 1 hilo a la derecha,
+nos dara datos desde que el servidor echo se ha inicializado.
+
+Un mutex es suficiente para controlar el acceso a la estrtura de datos. Para aumentar
+el nivel de concurrencia podriamos usar un MutexReadWrite, solamente leer, el conflucto esta
+entre consumidor y Productores.
+
+Si quieren acceder pues habra un control de concuttrencia.
+La esceitura por un mutex estandar
+
+SCHEDULING
+Depende tambien si le permiten manipular los parametros, entre ellos la politica, la politica estandar
+por ejemplo, o la de tiempo real.
+La prioridad es otro parametro.
+
+MANIPULACION DE LAS PRIORIDADES
+Andate con ojo pibe.
+Puede que a pesar de tener mayor priorida no se podria ejecutar. Se debe de tener cuidado
+con la manipulacion de estos parametros.
+
+
+se ejcuta cuando se inicia
+
+[root@localhost Pthreads-progs]# ./maxthreads 3
+MAX THs: 76
+Tid del hilo main(): 140447649396544
+TH (0): 140447649392384
+Tid del hilo thread1(): 140447649392384
+TH (1): 140447640999680
+Tid del hilo thread1(): 140447640999680
+TH (2): 140447632606976
+Tid del hilo thread1(): 140447632606976
+C = 3
+
+
+Qué pasa si no hay el mecanismo de control, el pthread_join ?
+pues que el padre no espera a que todos terminen por lo tanto habran errores en la impresion de la
+variable C.
+
+pues nos va a dar valores incorrectos.
+
+Podria haber deadlock en este programa?
+  ºdeadlock, bloqueo mutuo, uno quiere entrar y el otro tambien. Simplemente es una suma, todos los
+  hilos pasaran esta seccion, tengo solo un mutex. Un grafo con 4 nodos pero ningun ciclo, no existe dependencias
+  entre hilos, es una jodida suma. Dos hilos y dos mutex, tal vez se diese un deadlock.
+  ºlivelock, bloque cooperativo, en un while o for, en un hilo se aumenta y el otro disminuye el valor de la vsariable
+  una condicion nunca se va a cumplir.
+  ºstarvation
+
+OTRO PROGRAMA, BARRERAAAS
+SI SE TRATA DEL HILO 1 O HILO 2
+
+[root@localhost Pthreads-progs]# ./barreras
+MAX THs: 76
+thread1 inicia a las Wed Jan 20 12:02:51 2021
+thread2 inicia a las Wed Jan 20 12:02:51 2021
+Hilo main() esperando en la barrera a las Wed Jan 20 12:02:51 2021
+barrera en thread2() finaliza a las  Wed Jan 20 12:03:01 2021
+barrera en thread1() finaliza a las  Wed Jan 20 12:03:01 2021
+barrera en main() finaliza a las  Wed Jan 20 12:03:01 2021
+
+SECOND PART
+
+programa mm_prog6
+puedo hacerlo sin el pthread_join o sin el detach?
+
+programa 9:00
+Podriamos experimentar y revisar si en relaidad se esta ejecutando con la nueva politica y con que parametros
+y reportar en la siguiente clase. Incluir codigo para revisar la prioridad, cambiar la prioridad.
+
+tls programa
+los hilos comparten memoria meem global y dinamica, hay comportamiento dinamico. Cuando se retornan
+las funciones las variables de esos frames. La idea aqui es tener variables globales para Cada
+pila.
+Variables locales que desaparecen, como puedo hacer que vivan en la dinamica de la ejecucion de los hilos
+Para eso sirve ese almacenamiento local,
+
+Para esas variables que solo viven durante la ejecucion correspondiente, desaparecen cuando la funcion retorna.
+Quiero variables accedibles a cada pila y vivan durante la ejecucion de cada hilo, que
+no desaparezcan si las  funciones desaparezcan, sin recurrir a las var globales.
+
+Revisen estos programas
+
+SOCKETS
+Variables condicionales para paralelismo entre varios hilos, muy importante.
+Sockets, elementos logicos para respresentar los objetos fisicos. Objetos de comunic, alma, y computacion.
+Procesa datos, es un archivo. dISPOistiovs para acceder a los procesos de comunicacion como a las tarjetas wireless
+podemos verslo como un telefono, le pido prestado al so, despues necesito una sim, oye so conectame a esa direccion/sim, una vex
+estoy dentro de la red puedo hacer llamadas a otros sockets, recibir paquetes, pensajes,
+o pedirle a mi so terminar con la conexion y terminar.
+
+Tenemos una API para hacer esas operaciones
+Servidor Echo que usa SOCKETS
+ 23:45 no tengo el codigo. DIAPOSITIVA 18 Estructura de datos compartido.
+
+    El hilo maestro, acepta conexiones(recibe la conexion con un socket) y
+    creando hilos(otros sockets) para atender a los clientes.
+    Leen lo que les escriben los clientes y responden. Hace ECHO.
+
+    Mutex en las variables del monitoreo, 3 mutex de acceso exclusivo.
+
+    Mutex tambien para leer las variables, durante 5 segundos.
+
+Se ejecuta el programa.
+No es tan prioritario. Concurrencia aplicada a este Servidor Echo.
+Se mantiene la inegridad.
+
+PROFUNDICEN SOBRE LAS VARIABLES CONDICIONALES
+Si no hay cambios, se despliega periodicamente la misma informacion. Entonces yo qusiera que
+se despliegue solo cuando haya nueva info, para ello uso variables condicionales.
+
+Pido acceso exclusivo, luego con la variable condicional asociada a ese mutex
+verficamos que se ha cumplido esa condicion.
+
+>>>La condicional libera el mutex, cuando los hilos producen nuevos datos devuelve
+el lock del mutex al hilo para que despliegue informacion en el log.
+
+Dedicate a los otros programas, nos son de mas interes.
