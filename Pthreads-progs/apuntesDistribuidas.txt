@@ -139,3 +139,9 @@ el lock del mutex al hilo para que despliegue informacion en el log.
 Dedicate a los otros programas, nos son de mas interes.
 
 Esto es una prueba
+
+
+martes 26 de enero
+la diferencia de join y future es que en join se con que hilo trabajao, sin embargo con
+future no se con que hilo trabajao. Yo creo una poool y ahi ella sabra que hilo asigna
+a la tarea que queiro que se lleve a cabo.

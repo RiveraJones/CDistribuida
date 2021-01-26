@@ -10,7 +10,7 @@ public class InvokeAll {
     public static void main (String argvs[]) throws InterruptedException {
         ExecutorService executor = Executors.newWorkStealingPool();
 
-        List<Callable<String>> callables = Arrays.asList(
+        List<Callable<String>> callables = Arrays.asList(//se crean las tareas para meterlas al pool
                 () -> "task1",
                 () -> "task2",
                 () -> "task3");
@@ -19,7 +19,7 @@ public class InvokeAll {
                 .stream()
                 .map(future -> {
                     try {
-                        return future.get();
+                        return future.get();//para cada una de las 3 tareas, sincorniza, esta funcion bloqueante, entonces ya la podemos usar.
                     }
                     catch (Exception e) {
                         throw new IllegalStateException(e);
