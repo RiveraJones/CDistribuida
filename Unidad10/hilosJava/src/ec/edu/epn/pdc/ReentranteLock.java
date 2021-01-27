@@ -12,7 +12,7 @@ public class ReentranteLock {
     public static int count = 0;
     void increment() {
         lock.lock();
-        try {
+        try {//seccion critica. Solo un hilo estara ejecutando este incremeneto. Me garantiza ninguna condicion de carrera con mas de 2 hilos
             count++;
         } finally {
             lock.unlock();

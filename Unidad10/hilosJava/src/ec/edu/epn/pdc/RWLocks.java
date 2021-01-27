@@ -12,7 +12,7 @@ import static ec.edu.epn.pdc.ConcurrentUtils.stop;
 
 public class RWLocks {
     public static void main (String argvs[]) {
-        ExecutorService executor = Executors.newFixedThreadPool(1);
+        ExecutorService executor = Executors.newFixedThreadPool(1);//pool de 1 hilo
         Map<String, String> map = new HashMap<>();
         ReadWriteLock lock = new ReentrantReadWriteLock();
 
