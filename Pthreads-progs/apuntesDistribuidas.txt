@@ -139,3 +139,7 @@ el lock del mutex al hilo para que despliegue informacion en el log.
 Dedicate a los otros programas, nos son de mas interes.
 
 Esto es una prueba
+
+
+
+miercoles 26 de enero 2021
