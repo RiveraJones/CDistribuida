@@ -14,9 +14,10 @@ public class InvokeAny {
     public static void main (String argvs[]) throws ExecutionException, InterruptedException {
         ExecutorService executor = Executors.newWorkStealingPool();
         List<Callable<String>> callables = Arrays.asList(
-            callable("task1", 2),
-            callable("task2", 1),
-            callable("task3", 3));
+                //tengo 3 tareas ejecutandose con concurrencia. Si tengo solo 2 cores, de los 3 hilos solo 2 al mismo tiempo, concurrentes.
+            callable("task1", 2),//luego este
+            callable("task2", 1),//el futuro mas cercano, este primero. Este tarea termina primera, este future esta disponible antes.
+            callable("task3", 3));//finalmente este
         String result = executor.invokeAny(callables);
         System.out.println(result);
     }

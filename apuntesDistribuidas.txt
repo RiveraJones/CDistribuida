@@ -141,5 +141,12 @@ Dedicate a los otros programas, nos son de mas interes.
 Esto es una prueba
 
 
+<<<<<<< HEAD:Pthreads-progs/apuntesDistribuidas.txt
 
 miercoles 26 de enero 2021
+=======
+martes 26 de enero HilosJava
+la diferencia de join y future es que en join se con que hilo trabajao, sin embargo con
+future no se con que hilo trabajao. Yo creo una poool y ahi ella sabra que hilo asigna
+a la tarea que queiro que se lleve a cabo.
+>>>>>>> 6462b96706f85668d854340c4e8fd4ff9a2dcec8:apuntesDistribuidas.txt
