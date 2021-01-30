@@ -1,0 +1,73 @@
+PROGRAMAS OPENMP DEL CAPITULO 3 DEL TEXTO
+
+COMPILAR:
+	make -f Makefile.OpenMP
+
+hola-3-1.c:
+	Listado 3.1 -/ Programa "hello-world.c"  
+	OMP_NUM_THREADS; PERMUTACIONES; OMP_THREAD_LIMIT
+
+fibonacci-3-2.c:
+	Listado 3.2
+	MONITOREO gcc -fopenmp -O2 -o fibonacci fibonacci.c
+	export OMP_NUM_THREADS=8; time ./fibonacci
+
+buclesIterIndepend-3-3.c:
+	Listado 3.3 - bucles con iteraciones independientes
+
+buclesAnidados-3-5.c:
+	listado 3.5 del libro - bucles anidados - todos los pares de numeros
+	solo paraleliza outermost for  OMP_NESTED
+
+buclesColapsados-3-6.c:
+	listado 3.6 del libro - bucles colapsados
+
+buclesSeparados-3-7.c:
+	listado 3.7 - bucles separados (un pragma paralelo para cada for)
+	OMP_NESTED; OMP_NUM_THREADS=2,2
+
+mtxMult-3-8.c:
+	multiplicacion de matrices nxn generadas randomicamente
+
+iterDepend-3-11.c:
+	listado 3.11 - iteraciones dependientes - race conditions
+	#PRAGMA OMP CRITICAL
+	#PRAGMA OMP ATOMIC
+
+reduccion-3-14.c:
+	Listado 3.14 - Sum of ints from a given interval using reduction — fast
+
+pi-3-15.c:
+	Listado 3.15 - Computing π by integrating √1 − x2 from 0 to 1.
+
+pi-3-16.c:
+	Listado 3.16 - Calculo de pi: √1 − x2 de 0-1 con for non-paralelizable
+
+	OMP_NUM_THREADS=1 => OK
+
+rndShoot-3-17.c:
+	listado 3.17 - random shooting para calculo de pi
+
+rndShoot-3-18.c:
+	listado 3.18 - otra version de random shooting para calculo de pi
+
+rndShootParSec-3-19.c:
+	Listing 3.19 Computing π by random shooting using parallel sections 
+
+runtime-3-20.c:
+	Listado 3.20 - Uso de scheduling definido at runtime
+	4 HILOS; 14 MAX; OMP_SCHEDULE
+
+tareas-3-24.c:
+	Listado 3.24 - summation of integers by using a fixed number of tasks.
+
+testNested.c:
+	testNested- pragmas anidados no generan hilos paralelos
+	OMP_NESTED=true para habilitar paralelizacion de bubles anidados
+
+tres_openmp_critical.c:
+	programa "tres" con seccion critica OMP
+
+tres_openmp_reduction.c:
+	programa "tres" con reduccion OMP
+
