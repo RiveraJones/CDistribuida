@@ -150,3 +150,14 @@ la diferencia de join y future es que en join se con que hilo trabajao, sin emba
 future no se con que hilo trabajao. Yo creo una poool y ahi ella sabra que hilo asigna
 a la tarea que queiro que se lleve a cabo.
 >>>>>>> 6462b96706f85668d854340c4e8fd4ff9a2dcec8:apuntesDistribuidas.txt
+
+
+sabado 30 de enero
+Modelos para sistemas paralelos
+Depende de su nivel de abstraccion
+
+
+upper level------> architectural models, interconnection network of parallel platforms, the memory organization, the synchronous or asynchronous processing, or the execution mode
+of single instructions by SIMD or MIMD
+lowest level-----> machine models, description of hardware and operating system, e.g., the registers or the input and output buffers
+, computational models, and programming models.
