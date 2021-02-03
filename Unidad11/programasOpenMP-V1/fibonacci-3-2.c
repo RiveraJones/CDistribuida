@@ -3,7 +3,9 @@
 #include <stdio.h>
 #include <omp.h>
 
-long fib (int n) { return (n < 2 ? 1 : fib (n - 1) + fib (n - 2)); }
+long fib (int n) {
+  return (n < 2 ? 1 : fib (n - 1) + fib (n - 2));
+}
 
 int main (int argc, char *argv[]) {
   int n = 40;

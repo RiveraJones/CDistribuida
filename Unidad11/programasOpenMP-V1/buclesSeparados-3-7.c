@@ -8,7 +8,7 @@ int main (int argc , char *argv []) {
   if (argc!=2) { printf ("USO: %s <max-hilos>\n", argv[0]); exit (1);}
   int max = atoi(argv[1]);
   //omp_set_nested (1);
-  #pragma omp parallel for
+  #pragma omp parallel for 
   for (int i = 1; i <= max; i++) {
     #pragma omp parallel for
     for (int j = 1; j <= max; j++) {
