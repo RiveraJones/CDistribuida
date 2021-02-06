@@ -6,7 +6,7 @@ public class Pipeline {
 
     public static void doWork(int n) {
         try {
-            Thread.currentThread().sleep(n);
+            Thread.currentThread().sleep(n);//en caso de excepcion alguna, catch
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -14,9 +14,12 @@ public class Pipeline {
     public static void main (final String [] args) {
         final int n = 100;
         for (int numRun=0; numRun<5; numRun++) {
+
             System.out.printf("Run %d\n", numRun);
+
             final Phaser ph1 = new Phaser(1);
             final Phaser ph2 = new Phaser(1);
+
             Thread t1 = new Thread(() -> {
                 for (int i=0; i<n; i++) {
                     doWork(10);
