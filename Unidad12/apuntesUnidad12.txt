@@ -1,0 +1,28 @@
+martes 9 de febrero
+para cualquier
+TPU, unidades de procesamiento de tensores
+
+CUDA, baby.
+
+cpu, para procesameinto general, proposito general. Desarrollo de programas, oficina,
+  ofimatica, lo que tu quieras, cariño.
+gpu, misma operacion para muchos datos. 1 operacion N datos SIMD. Por lo tanto es eficiente. MIMD, NOOO.
+  para procesamiento de graficos. Optimiza procesamiento paralelo. >>PROCESAMIENTO DE GRÁFICOS
+
+¿tarjeta de video? vale, proceso graficos y pa que mas? ML, IA.
+
+TPU, unidades de procesamiento de tensores. Entrenamiento en IA, aplicando algebra 
+  no lineal basados en estructuras de datos llamados tensores.     >>PROCESAMIENTO DE TENSORES
+
+
+  GPU CORES, NODOS
+________________________
+Fetch/Decode
+------------------------
+ALU
+------------------------
+EXECUTION CONTEXT (valores registers), guarda el contexto de registros. CArga el nuevo contexto y luego continua.
+________________________
+
+Analisis del problema, cuanod usar este sistema heterogeneo de cores cpy y gpu.
+Podria ser contraproducente.
